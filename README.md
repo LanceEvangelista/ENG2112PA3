@@ -41,6 +41,24 @@ to search for "Mazda RX4" in only the "Model" column within the cars ccsv file.
 
 This command tells the program if it finds the model name "Mazda RX4" to be true, it will add it to the list of printed cars in the data table when printed.
 
+If we want to display the amount of cylinders of a certain modal of car say "Camaro Z28" we can first search for the car using the same type of syntax `.loc`
+further condtions just have to be added in order to only show the amount of cylinders.
 
 
+`cars.loc[(cars['Model']=='Camaro Z28'), ['cyl']]`
+
+Here python first searches for the car with the entry "Camaro Z28" under model
+then using ['cyl'] we tell python to only display the cylinder column of that given entry.
+
+Lastly if we want to determine the cylinder and gear type of multiple cars we can use `.loc` along with `.isin` syntax to index only the specified cars we want.
+
+`cars.loc[cars['Model'].isin(['Mazda RX4 Wag','Ford Pantera L', 'Honda Civic']), ['Model', 'cyl','gear']]`
+
+The portion: 
+` .isin(['Mazda RX4 Wag','Ford Pantera L', 'Honda Civic']) ` 
+
+tells the program to search for entries with these names in the 'Model' category. 
+After indexing we can set the columns the program will print by using:
+
+`['Model', 'cyl','gear']`
 
